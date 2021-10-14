@@ -1,9 +1,11 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { Container, Title } from './styles';
 
 export function Dashboard() {
   return (
-    <Container/>
+    <Container>
+      <Title>Dashboard</Title>
+    </Container>
   );
 }
