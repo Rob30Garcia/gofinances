@@ -50,10 +50,16 @@ export const UserGretting = styled.Text`
 export const UserName = styled.Text`
   font-size: ${RFValue(18)}px;
   font-family: ${({ theme }) => theme.fonts.bold};
-  color: ${({ theme }) => theme.colors.shape}
+  color: ${({ theme }) => theme.colors.shape};
 `;
 
 export const Icon = styled(Feather)`
   font-size: ${RFValue(24)}px;
   color: ${({theme}) => theme.colors.secondary};
 `;
+
+export const Highlights = styled.ScrollView.attrs({
+  horizontal: true,
+  showsHorizontalScrollIndicator: false,
+  contentContainerStyle: { paddingHorizontal: 24 }
+})``;
