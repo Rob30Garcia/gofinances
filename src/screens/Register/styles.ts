@@ -22,3 +22,8 @@ export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular};
   color: ${({ theme }) => theme.colors.shape};
 `;
+
+export const Form = styled.View`
+  flex: 1;
+  padding: 24px;
+`;
