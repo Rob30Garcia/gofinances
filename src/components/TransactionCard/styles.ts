@@ -52,6 +52,7 @@ export const CategoryName = styled.Text`
   font-size: ${RFValue(14)}px;
   font-family: ${({ theme }) => theme.fonts.regular};
   color: ${({ theme }) => theme.colors.texts};
+  margin-left: 16px;
 `;
 
 export const Date = styled.Text`
