@@ -90,6 +90,10 @@ export function Dashboard() {
           renderItem={({ item }) => 
             <TransactionCard data={item} />
           }
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            paddingBottom: 20
+          }}
         />
 
       </Transactions>
