@@ -20,6 +20,7 @@ import { TransactionCard } from '../../components/TransactionCard';
 
 export function Dashboard() {
   const data = {
+    type: 'positive',
     title: 'Desenvolvimento de site',
     amount: 'R$ 12.000,00',
     category: {
