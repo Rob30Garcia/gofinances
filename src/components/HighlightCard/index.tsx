@@ -7,7 +7,7 @@ import {
   Icon,
   Footer,
   Amount,
-  LastTransition,
+  LastTransaction,
 } from './styles';
 
 export function HighlightCard() {
@@ -20,9 +20,9 @@ export function HighlightCard() {
 
       <Footer>
         <Amount>R$ 17.400,00</Amount>
-        <LastTransition>
+        <LastTransaction>
           Última entrada dia 13 de abril
-        </LastTransition>
+        </LastTransaction>
       </Footer>
     </Container>
   );

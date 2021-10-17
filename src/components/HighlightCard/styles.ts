@@ -39,7 +39,7 @@ export const Amount = styled.Text`
   font-size: ${RFValue(32)}px;
 `;
 
-export const LastTransition = styled.Text`
+export const LastTransaction = styled.Text`
   color: ${({ theme }) => theme.colors.texts};
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(12)}px;
