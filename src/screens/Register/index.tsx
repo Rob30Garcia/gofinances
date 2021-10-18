@@ -8,6 +8,7 @@ import {
 } from './styles';
 
 import { Input } from '../../components/Form/Input';
+import { Button } from '../../components/Form/Button';
 
 export function Register() {
   return (
@@ -24,6 +25,8 @@ export function Register() {
         <Input 
           placeholder="Preço"
         />
+
+        <Button title="Enviar"/>
       </Form>
 
     </Container>
