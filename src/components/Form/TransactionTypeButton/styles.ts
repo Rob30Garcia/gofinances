@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { TouchableOpacity } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { Feather } from '@expo/vector-icons';
 
@@ -6,7 +7,7 @@ interface IconProps {
   type: 'up' | 'down';
 }
 
-export const Container = styled.View`
+export const Container = styled(TouchableOpacity)`
   width: 48%;
 
   flex-direction: row;

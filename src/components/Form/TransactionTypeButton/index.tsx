@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacityProps } from 'react-native';
 
 import { 
   Container,
@@ -6,7 +7,7 @@ import {
   Title, 
 } from './styles';
 
-interface Props {
+interface Props extends TouchableOpacityProps {
   type: 'up' | 'down';
   title: string;
 }
@@ -18,10 +19,11 @@ const icons = {
 
 export function TransactionTypeButton({ 
   title,
-  type 
+  type,
+  ...rest 
 }: Props) {
   return (
-    <Container >
+    <Container {...rest}>
       <Icon 
         name={icons[type]}
         type={type}
