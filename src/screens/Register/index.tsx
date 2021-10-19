@@ -5,11 +5,13 @@ import {
   Header,
   Title, 
   Form,
-  Fields
+  Fields,
+  TransactionType
 } from './styles';
 
 import { Input } from '../../components/Form/Input';
 import { Button } from '../../components/Form/Button';
+import { TransactionTypeButton } from '../../components/Form/TransactionTypeButton';
 
 export function Register() {
   return (
@@ -27,6 +29,20 @@ export function Register() {
           <Input 
             placeholder="Preço"
           />
+
+          <TransactionType>
+
+            <TransactionTypeButton 
+              type="up"
+              title="Income"
+            /> 
+
+            <TransactionTypeButton 
+              type="down"
+              title="Outcome"
+            /> 
+
+          </TransactionType>
         </Fields>
 
         <Button title="Enviar"/>
