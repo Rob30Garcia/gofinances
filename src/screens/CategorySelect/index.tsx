@@ -52,7 +52,10 @@ export function CategorySelect({
       />
 
       <Footer>
-        <Button title="Selecionar"/>
+        <Button 
+          title="Selecionar"
+          onPress={closeSelectCategory}
+        />
       </Footer>
     </Container>
   );
