@@ -2,6 +2,7 @@ import React from 'react';
 import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'expo-status-bar'
 import { ThemeProvider } from 'styled-components';
+import { NavigationContainer } from '@react-navigation/native';
 
 import {
   useFonts,
@@ -10,10 +11,9 @@ import {
   Poppins_700Bold
 } from '@expo-google-fonts/poppins';
 
-import theme from './src/global/styles/theme';
+import { AppRoutes } from './src/routes/app.routes';
 
-import { Dashboard } from './src/screens/Dashboard/index';
-import { Register } from './src/screens/Register/index';
+import theme from './src/global/styles/theme';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -29,7 +29,9 @@ export default function App() {
   return (
     <ThemeProvider theme={theme} >
       <StatusBar style='dark' backgroundColor='transparent'/>
-      <Register />
+      <NavigationContainer>
+        <AppRoutes />
+      </NavigationContainer>
     </ThemeProvider>
   );
 }
