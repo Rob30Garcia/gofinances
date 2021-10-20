@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Modal } from 'react-native';
+import { 
+  Modal,
+  TouchableWithoutFeedback,
+  Keyboard 
+} from 'react-native';
 
 import { 
   Container,
@@ -60,68 +64,72 @@ export function Register() {
   }
 
   return (
-    <Container>
-      <Header>
-        <Title>Cadastrar</Title>
-      </Header>
+    <TouchableWithoutFeedback
+      onPress={Keyboard.dismiss}
+    >
+      <Container>
+        <Header>
+          <Title>Cadastrar</Title>
+        </Header>
 
-      <Form>
-        <Fields>
-          <InputForm 
-            control={control}
-            placeholder="Nome"
-            name="name"
-            autoCapitalize="sentences"
-            autoCorrect={false}
+        <Form>
+          <Fields>
+            <InputForm 
+              control={control}
+              placeholder="Nome"
+              name="name"
+              autoCapitalize="sentences"
+              autoCorrect={false}
+            />
+
+            <InputForm 
+              control={control} 
+              placeholder="Preço"
+              name="amount"
+              keyboardType="numeric"
+            />
+
+            <TransactionType>
+
+              <TransactionTypeButton 
+                type="up"
+                title="Income"
+                onPress={() => handleTransactionType('up')}
+                isActive={transactionType === 'up'}
+              /> 
+
+              <TransactionTypeButton 
+                type="down"
+                title="Outcome"
+                onPress={() => handleTransactionType('down')}
+                isActive={transactionType === 'down'}
+              /> 
+
+            </TransactionType>
+
+            <CategorySelectButton 
+              title={category.name}
+              onPress={handleOpenCategorySelectModal}
+            />
+          </Fields>
+
+          <Button 
+            title="Enviar"
+            onPress={handleSubmit(handleRegister)}
           />
+        </Form>
 
-          <InputForm 
-            control={control} 
-            placeholder="Preço"
-            name="amount"
-            keyboardType="numeric"
+        <Modal
+          visible={categorySelectModalOpen}
+        >
+          <CategorySelect 
+            category={category}
+            setCategory={setCategory}
+            closeSelectCategory={handleCloseCategorySelectModal}
           />
+        </Modal>
 
-          <TransactionType>
-
-            <TransactionTypeButton 
-              type="up"
-              title="Income"
-              onPress={() => handleTransactionType('up')}
-              isActive={transactionType === 'up'}
-            /> 
-
-            <TransactionTypeButton 
-              type="down"
-              title="Outcome"
-              onPress={() => handleTransactionType('down')}
-              isActive={transactionType === 'down'}
-            /> 
-
-          </TransactionType>
-
-          <CategorySelectButton 
-            title={category.name}
-            onPress={handleOpenCategorySelectModal}
-          />
-        </Fields>
-
-        <Button 
-          title="Enviar"
-          onPress={handleSubmit(handleRegister)}
-        />
-      </Form>
-
-      <Modal
-        visible={categorySelectModalOpen}
-      >
-        <CategorySelect 
-          category={category}
-          setCategory={setCategory}
-          closeSelectCategory={handleCloseCategorySelectModal}
-        />
-      </Modal>
-
-    </Container>
+      </Container>
+    </TouchableWithoutFeedback>
   );
 }
