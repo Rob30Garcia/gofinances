@@ -8,10 +8,12 @@ import {
   Category,
   Icon,
   Name,
-  Separator
+  Separator,
+  Footer
 } from './styles';
 
 import {categories } from '../../utils/categories';
+import { Button } from '../../components/Form/Button';
 
 interface Category {
   key: string;
@@ -48,6 +50,10 @@ export function CategorySelect({
         )}
         ItemSeparatorComponent={() => <Separator />}
       />
+
+      <Footer>
+        <Button title="Selecionar"/>
+      </Footer>
     </Container>
   );
 }
