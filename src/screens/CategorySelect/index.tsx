@@ -13,7 +13,22 @@ import {
 
 import {categories } from '../../utils/categories';
 
-export function CategorySelect() {
+interface Category {
+  key: string;
+  name: string;
+}
+
+interface Props {
+  category: Category;
+  setCategory: (category: Category) => void;
+  closeSelectCategory: () => void;
+}
+
+export function CategorySelect({
+  category,
+  setCategory,
+  closeSelectCategory
+}: Props) {
   return (
     <Container>
       <Header>
