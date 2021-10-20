@@ -37,7 +37,8 @@ const schema = Yup.object().shape({
   .number()
   .typeError('Informe um valor numérico.')
   .positive('O valor não pode ser negativo.')
-})
+  .required('O valor é obrigatório')
+});
 
 export function Register() {
   const [transactionType, setTransactionType] = useState('');
@@ -50,10 +51,13 @@ export function Register() {
 
   const {
     control,
-    handleSubmit
+    handleSubmit,
+    formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
   });
+
+  console.log(errors);
   
   function handleTransactionType( type: 'up' | 'down') {
     setTransactionType(type);
@@ -104,6 +108,7 @@ export function Register() {
               name="name"
               autoCapitalize="sentences"
               autoCorrect={false}
+              error={errors.name && errors.name.message}
             />
 
             <InputForm 
@@ -111,6 +116,7 @@ export function Register() {
               placeholder="Preço"
               name="amount"
               keyboardType="numeric"
+              error={errors.amount && errors.amount.message}
             />
 
             <TransactionType>
