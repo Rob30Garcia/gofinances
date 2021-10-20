@@ -3,8 +3,11 @@ import { useForm } from 'react-hook-form';
 import { 
   Modal,
   TouchableWithoutFeedback,
-  Keyboard 
+  Keyboard, 
+  Alert
 } from 'react-native';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 
 import { 
   Container,
@@ -26,6 +29,16 @@ interface FormData {
   amount: string;
 }
 
+const schema = Yup.object().shape({
+  name: Yup
+    .string()
+    .required('Nome é obrigatório.'),
+  amount: Yup
+  .number()
+  .typeError('Informe um valor numérico.')
+  .positive('O valor não pode ser negativo.')
+})
+
 export function Register() {
   const [transactionType, setTransactionType] = useState('');
   const [categorySelectModalOpen, setCategorySelectModalOpen] = useState<boolean>(false)
@@ -38,7 +51,9 @@ export function Register() {
   const {
     control,
     handleSubmit
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(schema)
+  });
   
   function handleTransactionType( type: 'up' | 'down') {
     setTransactionType(type);
@@ -53,6 +68,15 @@ export function Register() {
   }
 
   function handleRegister(form: FormData) {
+    if(!transactionType) {
+      
+      return Alert.alert('Selecione a transação.');
+    }
+
+    if(category.key === 'category') {
+      return Alert.alert('Selecione uma categoria.')
+    }
+
     const data = {
       name: form.name,
       amount: form.amount,
