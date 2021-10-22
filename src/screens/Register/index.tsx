@@ -9,6 +9,7 @@ import {
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import uuid from 'react-native-uuid';
 
 import { 
   Container,
@@ -83,10 +84,12 @@ export function Register() {
     }
 
     const data = {
+      id: String(uuid.v4()),
       name: form.name,
       amount: form.amount,
       transactionType,
-      category: category.name
+      category: category.name,
+      date: new Date(),
     }
 
     try {
