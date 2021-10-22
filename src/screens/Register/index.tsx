@@ -10,6 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import uuid from 'react-native-uuid';
+import { useNavigation } from '@react-navigation/native';
 
 import { 
   Container,
@@ -31,6 +32,10 @@ interface FormData {
   amount: string;
 }
 
+type NavigationProps = {
+  navigate: (screen: string) => void;
+}
+
 const schema = Yup.object().shape({
   name: Yup
     .string()
@@ -45,6 +50,8 @@ const schema = Yup.object().shape({
 export function Register() {
   const [transactionType, setTransactionType] = useState('');
   const [categorySelectModalOpen, setCategorySelectModalOpen] = useState<boolean>(false)
+
+  const navigation = useNavigation<NavigationProps>();
 
   const dataKey = '@gofinances:transactions';
   
@@ -112,6 +119,7 @@ export function Register() {
         name: "Categoria"
       });
 
+      navigation.navigate('Listagem');
     } catch (err) {
       console.log(err);
       Alert.alert("Não foi possível salvar.")      
@@ -122,7 +130,7 @@ export function Register() {
     async function LoadingData() {
       const response = await AsyncStorage.getItem(dataKey);
       
-      console.log(response);
+      //console.log(response);
     }
 
     LoadingData();
