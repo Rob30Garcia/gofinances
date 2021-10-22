@@ -56,6 +56,7 @@ export function Register() {
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm({
     resolver: yupResolver(schema)
@@ -103,6 +104,13 @@ export function Register() {
       ]
 
       await AsyncStorage.setItem(dataKey, JSON.stringify(dataFormatted));
+
+      reset();
+      setTransactionType('');
+      setCategory({
+        key: "category",
+        name: "Categoria"
+      });
 
     } catch (err) {
       console.log(err);
