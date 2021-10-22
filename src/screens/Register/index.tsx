@@ -83,7 +83,7 @@ export function Register() {
       return Alert.alert('Selecione uma categoria.')
     }
 
-    const data = {
+    const newTransaction = {
       id: String(uuid.v4()),
       name: form.name,
       amount: form.amount,
@@ -93,7 +93,16 @@ export function Register() {
     }
 
     try {
-      await AsyncStorage.setItem(dataKey, JSON.stringify(data));
+      const data = await AsyncStorage.getItem(dataKey);
+      
+      const currentData = data ? JSON.parse(data) : [];
+
+      const dataFormatted = [
+        ...currentData,
+        newTransaction
+      ]
+
+      await AsyncStorage.setItem(dataKey, JSON.stringify(dataFormatted));
 
     } catch (err) {
       console.log(err);
@@ -104,9 +113,8 @@ export function Register() {
   useEffect(() => {
     async function LoadingData() {
       const response = await AsyncStorage.getItem(dataKey);
-
-      console.log(response);
       
+      console.log(response);
     }
 
     LoadingData();
