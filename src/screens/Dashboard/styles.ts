@@ -99,4 +99,11 @@ export const TransactionList = styled(
     contentContainerStyle: {
       paddingBottom: 20
     }
-  })``;
+  }
+)``;
+
+export const LoadingContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
