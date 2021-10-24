@@ -38,7 +38,11 @@ interface HighlightData {
 
 export function Dashboard() {
   const [data, setData] = useState<DataListProps[]>([]);
-  const [highlightData, setHighlightData] = useState<HighlightData>({} as HighlightData);
+  const [highlightData, setHighlightData] = useState<HighlightData>({
+    entries: { amount: 'R$ 0,00'},
+    expensive: { amount: 'R$ 0,00'},
+    total: { amount: 'R$ 0,00'},
+  });
 
   async function loadTransactions() {
     const dataKey = '@gofinances:transactions';
@@ -130,7 +134,6 @@ export function Dashboard() {
           </LogoutButton>
         </UserWrapper>
       </Header>
-
       <Highlights>
         <HighlightCard
           type="up"
