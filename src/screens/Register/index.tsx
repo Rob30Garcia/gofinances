@@ -69,7 +69,7 @@ export function Register() {
     resolver: yupResolver(schema)
   });
   
-  function handleTransactionType( type: 'up' | 'down') {
+  function handleTransactionType( type: 'positive' | 'negative') {
     setTransactionType(type);
   }
 
@@ -169,15 +169,15 @@ export function Register() {
               <TransactionTypeButton 
                 type="up"
                 title="Income"
-                onPress={() => handleTransactionType('up')}
-                isActive={transactionType === 'up'}
+                onPress={() => handleTransactionType('positive')}
+                isActive={transactionType === 'positive'}
               /> 
 
               <TransactionTypeButton 
                 type="down"
                 title="Outcome"
-                onPress={() => handleTransactionType('down')}
-                isActive={transactionType === 'down'}
+                onPress={() => handleTransactionType('negative')}
+                isActive={transactionType === 'negative'}
               /> 
 
             </TransactionType>
